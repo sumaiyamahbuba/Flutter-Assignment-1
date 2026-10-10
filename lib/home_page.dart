@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -7,31 +6,114 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // App Bar
       appBar: AppBar(
-        title: const Text("HomePage"),
-        backgroundColor: const Color.fromARGB(255, 14, 109, 28),
+        title: Text("HomePage"),
+        backgroundColor: Colors.greenAccent,
         foregroundColor: Colors.white,
-
-        // Left Home Icon
-        leading: const Icon(Icons.home),
-
-        // Right side icons
+        // leading: Icon(Icons.home),
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.person)),
+          IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+          IconButton(onPressed: () {}, icon: Icon(Icons.person)),
         ],
       ),
 
-      // Body
-      body: Text(
-        'Hello, Welcome to our project',
+      drawer: Drawer(
+        child: Column(
+          children: [
+            UserAccountsDrawerHeader(
+              decoration: BoxDecoration(color: Colors.greenAccent),
+              accountName: Text("Name"),
+              accountEmail: Text("Email"),
+              currentAccountPicture: Icon(Icons.person),
+            ),
 
-        style: GoogleFonts.lobster(
-          fontSize: 20,
-          color: const Color.fromARGB(255, 121, 63, 175),
-          fontWeight: FontWeight.bold,
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text("HomePage"),
+              hoverColor: Colors.greenAccent,
+              onTap: () {},
+            ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.contact_page),
+              title: Text("Contact"),
+              hoverColor: Colors.greenAccent,
+              onTap: () {},
+            ),
+            Divider(),
+
+            Spacer(),
+            ListTile(
+              leading: IconButton(onPressed: () {}, icon: Icon(Icons.person)),
+              trailing: IconButton(onPressed: () {}, icon: Icon(Icons.logout)),
+              title: Text("Profile"),
+            ),
+          ],
         ),
+      ),
+
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: TextButton(
+                onPressed: () {},
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.greenAccent,
+                  foregroundColor: Colors.white,
+                  side: BorderSide(color: Colors.pinkAccent),
+                  fixedSize: Size(100, 30),
+                  elevation: 5,
+                  shadowColor: Colors.amber,
+                ),
+                child: Text("Text Button"),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.greenAccent,
+                foregroundColor: Colors.white,
+                side: BorderSide(color: Colors.pinkAccent),
+                fixedSize: Size(150, 30),
+              ),
+              child: Text("Elevated Button"),
+            ),
+            SizedBox(height: 10),
+            OutlinedButton(onPressed: () {}, child: Text("Outlined Button")),
+            IconButton(onPressed: () {}, icon: Icon(Icons.login)),
+            Container(
+              height: 300,
+              width: 300,
+              margin: EdgeInsets.all(20),
+              padding: EdgeInsets.all(20),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: Colors.greenAccent,
+                border: Border.all(color: Colors.red, width: 5),
+                borderRadius: BorderRadius.all(Radius.circular(50)),
+                //shape: BoxShape.circle,
+                gradient: LinearGradient(
+                  colors: [Colors.green, Colors.greenAccent],
+                ),
+              ),
+              child: Text("welcome Container"),
+            ),
+          ],
+        ),
+      ),
+
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.greenAccent,
+        foregroundColor: Colors.white,
+        hoverColor: const Color.fromARGB(255, 107, 175, 109),
+        shape: BeveledRectangleBorder(),
+        tooltip: "Add",
+        child: Icon(Icons.add),
       ),
     );
   }
